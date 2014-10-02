@@ -144,9 +144,11 @@
 									}
 								});
 
-						}, d.playhead);
+						}, val.start===undefined ? d.playhead : val.start);
 
-						d.playhead += val.duration;
+                        console.log('start', val.start);
+						//d.playhead += val.duration;
+                        d.playhead = Math.max(d.playhead+val.duration, (val.start || 0) + val.duration);
 
 						// Keep track of setTimeOuts calls
 						d.setTimeOutHandler.push(sto); 
